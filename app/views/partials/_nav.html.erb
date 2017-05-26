@@ -1,0 +1,24 @@
+<nav data-topbar>
+  <section>
+    <% if logged_in? %>
+      <ul class="left">
+      <!-- link to dashboard -->
+        <li><%= link_to "Home", person_path(current_user) %></li>
+      </ul>
+
+      <ul class="right">
+        <li>
+        <%= link_to "Welcome, #{current_user.first_name}", person_path(current_user) %>
+        <ul>
+          <li><%= link_to "Edit settings", edit_person_path(current_user) %></li>
+          <li><%= link_to "Logout", logout_path %></li>
+        </ul>
+        </li>
+      </ul>
+    <% else %>
+      <ul>
+        <li> <%= link_to "Login", login_path %></li>
+      </ul>
+    <% end %>
+  </section>
+</nav>
