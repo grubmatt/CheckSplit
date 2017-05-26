@@ -1,7 +1,10 @@
 class Order < ActiveRecord::Base
 	belongs_to :person
-	has_many :order_items
-	has_many :item_splits, through: :order_items
+	has_many :order_items, :dependent => :destroy
+	has_many :item_splits, through: :order_items, :dependent => :destroy
+
+	accepts_nested_attributes_for :order_items, :allow_destroy => true
+	accepts_nested_attributes_for :item_splits, :allow_destroy => true
 
 	scope :for_person, -> (person) { joins(:item_splits).where(" orders.person_id = ? OR item_splits.person_id = ? ", person, person)}
 

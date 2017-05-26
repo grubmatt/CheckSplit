@@ -18,7 +18,7 @@
 	  <% @my_orders.each do |order| %>
 	    <tr>
 	      <td><%= order.get_user_cost(current_user) %></td>
-	      <td><%= order.description %></td>
+	      <td><%= link_to order.description, order_path(order) %></td>
 	      <td><%= order.person.proper_name %></td>
 	    </tr>
 	  <% end %>

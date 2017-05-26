@@ -1,4 +1,4 @@
-<%= form_for(@order) do |f| %>
+<%= nested_form_for(@order) do |f| %>
   <% if @order.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
@@ -11,13 +11,34 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :person_id %><br>
-    <%= f.number_field :person_id %>
+  <div class="group">
+    <%= f.label :person_id, "Created By" %><br>
+    <%= f.select :person_id, [[current_user.proper_name, current_user.id]], {}, class: "form-control" %>
   </div>
-  <div class="field">
+  <div class="group">
     <%= f.label :description %><br>
     <%= f.text_field :description %>
+  </div>
+
+
+  <%= f.fields_for :order_items do |oi_f| %>
+    <h5>Item</h5>
+    <div class="group">
+      <div class="group">
+        <%= oi_f.label :description %>
+        <%= oi_f.text_field :description %>
+      </div>
+      <div class="group">
+        <%= oi_f.label :cost %>
+        <%= oi_f.text_field :cost %>
+      </div>
+    </div>
+    <div class="group">
+      <%= oi_f.link_to_remove("Remove Item") %>
+    </div>
+  <% end %>
+  <div class="group">
+     <%= f.link_to_add("Add Item", :order_items) %>
   </div>
   <div class="actions">
     <%= f.submit %>
