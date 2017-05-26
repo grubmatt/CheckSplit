@@ -1,0 +1,12 @@
+<h3 >Log In</h3>
+
+<div>
+  <%= form_tag sessions_path do %>
+    <%= label_tag :email %>
+    <%= text_field_tag :email, params[:email] %>  
+
+    <%= label_tag :password %>
+    <%= password_field_tag :password %>
+    <%= submit_tag "Log In", class: "btn blue_btn" %>
+  <% end %>
+</div>
