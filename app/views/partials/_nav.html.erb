@@ -1,24 +1,27 @@
-<nav data-topbar>
-  <section>
+<div class="navbar">
+  <nav>
     <% if logged_in? %>
-      <ul class="left">
-      <!-- link to dashboard -->
-        <li><%= link_to "Home", person_path(current_user) %></li>
-      </ul>
-
-      <ul class="right">
+      <ul>
         <li>
-        <%= link_to "Welcome, #{current_user.first_name}", person_path(current_user) %>
-        <ul>
-          <li><%= link_to "Edit settings", edit_person_path(current_user) %></li>
-          <li><%= link_to "Logout", logout_path %></li>
-        </ul>
+          <%= link_to "Home", person_path(current_user) %>
+        </li>
+        <li>
+          <%= link_to "Orders", orders_path %>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <%= link_to "Logout", logout_path %>
         </li>
       </ul>
     <% else %>
+      <!-- Force right align -->
+      <ul></ul>
       <ul>
-        <li> <%= link_to "Login", login_path %></li>
+        <li>
+          <%= link_to "Login", login_path %>
+        </li>
       </ul>
     <% end %>
-  </section>
-</nav>
+  </nav>
+</div>

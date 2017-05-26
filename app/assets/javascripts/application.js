@@ -10,7 +10,22 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require kickstart_rails
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+
+function ready(fn) {
+  if (document.readyState!='loading') {
+    fn();
+  }
+  else {
+    document.addEventListener('DOMContentLoaded', fn);
+  }
+}
+
+ready(function() {
+  // Your code
+});
