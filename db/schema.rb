@@ -17,10 +17,10 @@ ActiveRecord::Schema.define(version: 20170526014556) do
   enable_extension "plpgsql"
 
   create_table "item_splits", force: :cascade do |t|
-    t.integer  "item_id"
+    t.integer  "order_item_id"
     t.integer  "person_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "order_items", force: :cascade do |t|

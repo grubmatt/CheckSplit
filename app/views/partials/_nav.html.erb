@@ -21,8 +21,15 @@
         <li>
           <%= link_to "Signup", signup_path %>
         </li>
-        <li>
-          <%= link_to "Login", login_path %>
+        <li>Login
+          <ul>
+            <li>
+              <%= link_to "Signup", signup_path %>
+            </li>
+            <li>
+              <%= link_to "Login", login_path %>
+            </li>
+          </ul>
         </li>
       </ul>
     <% end %>

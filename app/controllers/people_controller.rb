@@ -10,6 +10,8 @@ class PeopleController < ApplicationController
   # GET /people/1
   # GET /people/1.json
   def show
+    # Get all orders user created and are a part of
+    @my_orders = Order.for_person(current_user)
   end
 
   # GET /people/new

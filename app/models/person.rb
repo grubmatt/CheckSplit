@@ -7,4 +7,8 @@ class Person < ActiveRecord::Base
 	def self.authenticate(email, password)
     	find_by_email(email).try(:authenticate, password)
   	end
+
+  	def proper_name
+ 		"#{self.first_name} #{self.last_name}"
+  	end
 end

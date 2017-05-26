@@ -3,17 +3,17 @@
   <h4>Log In</h4>
 
   <%= form_tag sessions_path do %>
-  	<div class="group">
-	<%= label_tag :email %>
-	<%= text_field_tag :email, params[:email] %> 
+  <div class="group">
+	  <%= label_tag :email %>
+	 <%= text_field_tag :email, params[:email] %> 
 	</div>
 	<div class="group"> 
-	<%= label_tag :password %>
-	<%= password_field_tag :password %>
+	  <%= label_tag :password %>
+	  <%= password_field_tag :password %>
 	</div>
-    <div class="group">
-   		<%= link_to 'New User', new_person_path, class: "signup" %>
-   		<%= submit_tag "Log In" %>
-    </div>
+  <div class="group">
+ 		<%= link_to 'New User', new_person_path, class: "signup" %>
+ 		<%= submit_tag "Log In" %>
+  </div>
   <% end %>
 </div>

@@ -13,25 +13,40 @@
 
 @import 'kickstart_rails';
 
+/* Basic Components */
+
 .navbar {
   @include navbar();
-}
-
-.signup {
-  @include button(map-get($colors, green));
-}
-
-.form_offset {
-  @include column(6, 1);
-}
-
-.row {
-  @include row();
 }
 
 .form {
   @include form();
 }
+
 .group {
   @include form_group('horizontal');
+}
+
+/* Layout */
+
+.home {
+  @include row();
+}
+
+.user_info {
+  @include column(4, 1);
+}
+
+.orders, .form_offset {
+  @include column(6, 1);
+}
+
+/* Buttons */
+
+.signup {
+  @include button(map-get($colors, green));
+}
+
+.back_button {
+  @include button(map-get($colors, blue));
 }

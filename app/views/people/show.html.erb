@@ -1,24 +1,27 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>First name:</strong>
-  <%= @person.first_name %>
-</p>
+<div class="home">
+	<div class="user_info">
+	  <h2><%= @person.proper_name %></h2>
+	</div>
 
-<p>
-  <strong>Last name:</strong>
-  <%= @person.last_name %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @person.email %>
-</p>
-
-<p>
-  <strong>Password digest:</strong>
-  <%= @person.password_digest %>
-</p>
-
-<%= link_to 'Edit', edit_person_path(@person) %> |
-<%= link_to 'Back', people_path %>
+	<div class="orders">
+	  <h4> Orders </h4>
+	  <table>
+	    <thead>
+	      <tr>
+	        <th>You Owe</th>
+	        <th>Order Info</th>
+	        <th>Created By</th>
+	      </tr>
+	    </thead>
+	  <% @my_orders.each do |order| %>
+	    <tr>
+	      <td><%= order.get_user_cost(current_user) %></td>
+	      <td><%= order.description %></td>
+	      <td><%= order.person.proper_name %></td>
+	    </tr>
+	  <% end %>
+	  </table>
+	</div>
+</div>
