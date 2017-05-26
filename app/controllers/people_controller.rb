@@ -28,6 +28,7 @@ class PeopleController < ApplicationController
 
     respond_to do |format|
       if @person.save
+        session[:user_id] = @person.id
         format.html { redirect_to @person, notice: 'Person was successfully created.' }
         format.json { render :show, status: :created, location: @person }
       else
@@ -54,6 +55,9 @@ class PeopleController < ApplicationController
   # DELETE /people/1
   # DELETE /people/1.json
   def destroy
+    if current_user == @person
+      session[:user_id] = nil
+    end
     @person.destroy
     respond_to do |format|
       format.html { redirect_to people_url, notice: 'Person was successfully destroyed.' }
@@ -69,6 +73,6 @@ class PeopleController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def person_params
-      params.require(:person).permit(:first_name, :last_name, :email, :password_digest)
+      params.require(:person).permit(:first_name, :last_name, :email, :password, :password_confirmation)
     end
 end
