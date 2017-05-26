@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :orders
   resources :sessions
  
-  get 'user/edit' => 'person#edit', :as => :edit_current_user
+  get 'signup' => 'people#new', :as => :signup
   get 'login' => 'sessions#new', :as => :login
   get 'logout' => 'sessions#destroy', :as => :logout
 

@@ -1,13 +1,19 @@
-<h3 >Log In</h3>
+<div class="form_offset">
+  
+  <h4>Log In</h4>
 
-<div>
   <%= form_tag sessions_path do %>
-    <%= label_tag :email %>
-    <%= text_field_tag :email, params[:email] %>  
-
-    <%= label_tag :password %>
-    <%= password_field_tag :password %>
-    <%= submit_tag "Log In" %>
-    <%= link_to 'New User', new_person_path %>
+  	<div class="group">
+	<%= label_tag :email %>
+	<%= text_field_tag :email, params[:email] %> 
+	</div>
+	<div class="group"> 
+	<%= label_tag :password %>
+	<%= password_field_tag :password %>
+	</div>
+    <div class="group">
+   		<%= link_to 'New User', new_person_path, class: "signup" %>
+   		<%= submit_tag "Log In" %>
+    </div>
   <% end %>
 </div>
