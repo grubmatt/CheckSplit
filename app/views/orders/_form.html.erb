@@ -13,7 +13,7 @@
 
   <div class="group">
     <%= f.label :person_id, "Created By" %><br>
-    <%= f.select :person_id, [[current_user.proper_name, current_user.id]], {}, class: "form-control" %>
+    <%= f.select :person_id, [[current_user.proper_name, current_user.id]] %>
   </div>
   <div class="group">
     <%= f.label :description %><br>
@@ -21,24 +21,30 @@
   </div>
 
 
-  <%= f.fields_for :order_items do |oi_f| %>
-    <h5>Item</h5>
-    <div class="group">
-      <div class="group">
-        <%= oi_f.label :description %>
-        <%= oi_f.text_field :description %>
-      </div>
-      <div class="group">
-        <%= oi_f.label :cost %>
-        <%= oi_f.text_field :cost %>
-      </div>
-    </div>
-    <div class="group">
-      <%= oi_f.link_to_remove("Remove Item") %>
-    </div>
-  <% end %>
   <div class="group">
-     <%= f.link_to_add("Add Item", :order_items) %>
+    <%= f.fields_for :order_items do |oi_f| %>
+      <h5>Item</h5>
+      <div class="group">
+        <div class="group">
+          <%= oi_f.label :description %>
+          <%= oi_f.text_field :description %>
+        </div>
+        <div class="group">
+          <%= oi_f.label :cost %>
+          <%= oi_f.text_field :cost %>
+        </div>
+        <%= oi_f.fields_for :item_splits do |is_f| %>
+          <div class="group">
+            <%= is_f.label :person_id, "Person" %>
+            <%= is_f.select :person_id, Person.all.collect {|p| [ p.proper_name, p.id ]} %>
+          </div>
+          <%= is_f.link_to_remove("Remove Person", class: "red_button" ) %>
+        <% end %>
+        <%= oi_f.link_to_add("Add Person", :item_splits, class: "green_button") %>
+        <%= oi_f.link_to_remove("Remove Item", class: "red_button" ) %>
+      </div>
+    <% end %>
+    <%= f.link_to_add("Add Item", :order_items, class: "green_button") %>
   </div>
   <div class="actions">
     <%= f.submit %>

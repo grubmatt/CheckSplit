@@ -6,8 +6,25 @@
 	</div>
 
 	<div class="orders">
+	  <h4> Created Orders </h4>
+	  <table class="table">
+	    <thead>
+	      <tr>
+	        <th>Total Cost</th>
+	        <th>Order Info</th>
+	        <th>Created By</th>
+	      </tr>
+	    </thead>
+	  <% @created_orders.each do |order| %>
+	    <tr>
+	      <td><%= order.get_total_cost %></td>
+	      <td><%= link_to order.description, order_path(order) %></td>
+	      <td><%= order.person.proper_name %></td>
+	    </tr>
+	  <% end %>
+	  </table>
 	  <h4> Orders </h4>
-	  <table>
+	  <table class="table">
 	    <thead>
 	      <tr>
 	        <th>You Owe</th>

@@ -27,6 +27,14 @@
   @include form_group('horizontal');
 }
 
+.container {
+  @include container();
+}
+
+.table {
+  @include table($bordered: true, $zebra: true);
+}
+
 /* Layout */
 
 .home {
@@ -38,15 +46,19 @@
 }
 
 .orders, .form_offset {
-  @include column(6, 1);
+  @include column(5, 1);
 }
 
 /* Buttons */
 
-.signup {
+.green_button {
   @include button(map-get($colors, green));
 }
 
-.back_button {
+.blue_button {
   @include button(map-get($colors, blue));
+}
+
+.red_button {
+  @include button(map-get($colors, red));
 }
