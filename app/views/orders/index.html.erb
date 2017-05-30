@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<div class="orders_index">
+<div class="orders">
   <h1>Orders</h1>
   <table class="zebra_table">
     <thead>
@@ -9,6 +9,8 @@
         <th>Order Info</th>
         <th># of Items</th>
         <th>Creator</th>
+        <th>Edit</th>
+        <th>Delete</th>
       </tr>
     </thead>
     <% @orders.each do |order| %>
@@ -17,10 +19,14 @@
         <td><%= link_to order.description, order_path(order) %></td>
         <td><%= order.get_total_items %></td>
         <td><%= order.person.proper_name %></td>
+        <% if order.person == current_user %>
+          <td><%= link_to 'Edit', edit_order_path(order), class: "blue_button" %></td>
+          <td><%= link_to 'Delete', order, method: :delete, data: { confirm: 'Are you sure?' }, class: "red_button" %></td>
+        <% end %>
       </tr>
     <% end %>
   </table>
-  <div class="large_offset">
+  <div class="button_offset">
     <%= link_to 'New Order', new_order_path, class: "green_button" %>
   </div>
 </div>

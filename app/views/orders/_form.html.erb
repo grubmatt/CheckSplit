@@ -20,7 +20,6 @@
     <%= f.text_field :description %>
   </div>
 
-
   <div class="group">
     <%= f.fields_for :order_items do |oi_f| %>
       <h5>Item</h5>
@@ -46,7 +45,8 @@
     <% end %>
     <%= f.link_to_add("Add Item", :order_items, class: "green_button") %>
   </div>
-  <div class="actions">
+  <div class="group">
+    <%= link_to 'Back', orders_path, class: "blue_button" %>
     <%= f.submit %>
   </div>
 <% end %>

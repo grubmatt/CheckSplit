@@ -45,25 +45,34 @@
   @include row();
 }
 
-.user_info {
-  @include column(5, 1);
-}
-
-.form_offset {
-  @include column(5, 1);
-}
-
 .five_col {
   @include column(5);
 }
 
-.large_offset {
+.ten_col {
+  @include column(10);
+}
+
+.five_offset {
+  @include column(5, 1);
+}
+
+.five_med_offset {
+  @include column(5, 2);
+}
+
+.five_large_offset {
+  @include column(5, 6);
+}
+
+.orders {
+  @include column(10, 1);
+}
+
+.button_offset {
   @include column(2, 10.5)
 }
 
-.orders_index {
-  @include column(10, 1);
-}
 
 /* Buttons */
 
@@ -77,4 +86,15 @@
 
 .red_button {
   @include button(map-get($colors, red));
+}
+
+/* Tag Overrides */
+
+h4 {
+  margin-top: 0;
+}
+
+a {
+  color: #0060B6;
+  text-decoration: none;
 }
