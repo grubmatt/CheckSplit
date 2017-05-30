@@ -49,20 +49,16 @@
   @include column(5);
 }
 
-.ten_col {
-  @include column(10);
-}
-
 .five_offset {
   @include column(5, 1);
 }
 
-.five_med_offset {
-  @include column(5, 2);
-}
-
 .five_large_offset {
   @include column(5, 6);
+}
+
+.three_med_offset {
+  @include column(3, 4);
 }
 
 .orders {
@@ -73,6 +69,9 @@
   @include column(2, 10.5)
 }
 
+.button_med_offset {
+  @include column(1, 4)
+}
 
 /* Buttons */
 
@@ -96,5 +95,6 @@ h4 {
 
 a {
   color: #0060B6;
-  text-decoration: none;
+    text-decoration: none;
 }
+

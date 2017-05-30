@@ -1,37 +1,44 @@
 <p id="notice"><%= notice %></p>
 
-<div class="orders">
-  <div class="row">
-  	<div class="five_col">
-      <h1><%= @order.description %></h1>
+<div class="row">
+  <div class="five_offset">
+    <div class="five_col">
+      <h2><%= @order.description %></h2>
     </div>
-    <div class="five_med_offset">
+    <br><br>
+    <div class="five_col">
       <h4>Total Cost: $ <%= @order.get_total_cost %></h4>
       <h4>You owe: $ <%= @order.get_user_cost(current_user) %></h4>
     </div>
   </div>
-  <br>
-  <h3> Items </h3>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Cost</th>
-        <th>Item Info</th>
-        <th>Order Info</th>
-        <th>People Paying</th>
-      </tr>
-    </thead>
-  <% @order_items.each do |item| %>
-    <tr>
-      <td><%= item.cost %></td>
-      <td><%= item.description %></td>
-      <td><%= link_to item.order.description, order_path(item.order) %></td>
-      <td><%= item.splitters %></td>
-    </tr>
-  <% end %>
-  </table>
 
-  <div class="button_offset">
-  	<%= link_to 'Edit', edit_order_path(@order), class: "blue_button" %>
+  <div class="five_col">
+    <h4> Items </h4>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Cost</th>
+          <th>Item Info</th>
+          <th>People Paying</th>
+        </tr>
+      </thead>
+    <% @order_items.each do |item| %>
+      <tr>
+        <td><%= item.cost %></td>
+        <td><%= item.description %></td>
+        <td><%= item.splitters %></td>
+      </tr>
+    <% end %>
+    </table>
+    <% if @order.person == current_user %>
+      <div class="row">
+        <div class="five_col">
+          <%= link_to 'Edit Order', edit_order_path(@order), class: "blue_button" %>
+        </div>
+        <div class="three_med_offset">
+          <%= link_to 'Delete Order', @order, method: :delete, data: { confirm: 'Are you sure?' }, class: "red_button" %>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>

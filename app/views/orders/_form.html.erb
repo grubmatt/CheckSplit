@@ -19,7 +19,6 @@
     <%= f.label :description %><br>
     <%= f.text_field :description %>
   </div>
-
   <div class="group">
     <%= f.fields_for :order_items do |oi_f| %>
       <h5>Item</h5>
@@ -32,14 +31,14 @@
           <%= oi_f.label :cost %>
           <%= oi_f.text_field :cost %>
         </div>
-        <%= oi_f.fields_for :item_splits do |is_f| %>
-          <div class="group">
+        <div class="group">
+          <%= oi_f.fields_for :item_splits do |is_f| %>
             <%= is_f.label :person_id, "Person" %>
             <%= is_f.select :person_id, Person.all.collect {|p| [ p.proper_name, p.id ]} %>
-          </div>
-          <%= is_f.link_to_remove("Remove Person", class: "red_button" ) %>
-        <% end %>
-        <%= oi_f.link_to_add("Add Person", :item_splits, class: "green_button") %>
+            <%= is_f.link_to_remove("Remove Person", class: "red_button" ) %>
+          <% end %>
+          <%= oi_f.link_to_add("Add Person", :item_splits, class: "green_button") %>
+        </div>
         <%= oi_f.link_to_remove("Remove Item", class: "red_button" ) %>
       </div>
     <% end %>
