@@ -3,40 +3,46 @@
 <div class="home">
 	<div class="user_info">
 	  <h2><%= @person.proper_name %></h2>
+	  <br><br>
+	  <div class="small_offset">
+	  	<h4>Total Owed: $ <%= @outstanding %></h4>
+	  </div>
 	</div>
 
 	<div class="orders">
-	  <h4> Created Orders </h4>
+	  <h4> Your Orders </h4>
 	  <table class="table">
 	    <thead>
 	      <tr>
 	        <th>Total Cost</th>
+	        <th>You Owe</th>
 	        <th>Order Info</th>
-	        <th>Created By</th>
 	      </tr>
 	    </thead>
 	  <% @created_orders.each do |order| %>
 	    <tr>
 	      <td><%= order.get_total_cost %></td>
+	      <td><%= order.get_user_cost(current_user) %></td>
 	      <td><%= link_to order.description, order_path(order) %></td>
-	      <td><%= order.person.proper_name %></td>
 	    </tr>
 	  <% end %>
 	  </table>
-	  <h4> Orders </h4>
+	  <h4> Items You Split </h4>
 	  <table class="table">
 	    <thead>
 	      <tr>
 	        <th>You Owe</th>
+	        <th>Item Info</th>
 	        <th>Order Info</th>
 	        <th>Created By</th>
 	      </tr>
 	    </thead>
-	  <% @my_orders.each do |order| %>
+	  <% @my_items.each do |item| %>
 	    <tr>
-	      <td><%= order.get_user_cost(current_user) %></td>
-	      <td><%= link_to order.description, order_path(order) %></td>
-	      <td><%= order.person.proper_name %></td>
+	      <td><%= item.cost %></td>
+	      <td><%= item.description %></td>
+	      <td><%= link_to item.order.description, order_path(item.order) %></td>
+	      <td><%= item.order.person.proper_name %></td>
 	    </tr>
 	  <% end %>
 	  </table>

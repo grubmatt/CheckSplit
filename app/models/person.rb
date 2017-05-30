@@ -11,4 +11,8 @@ class Person < ActiveRecord::Base
   	def proper_name
  		"#{self.first_name} #{self.last_name}"
   	end
+
+  	def outstanding
+  		
+  	end
 end

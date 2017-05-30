@@ -6,7 +6,6 @@ class Order < ActiveRecord::Base
 	accepts_nested_attributes_for :order_items, :allow_destroy => true
 	accepts_nested_attributes_for :item_splits, :allow_destroy => true
 
-	scope :for_person, -> (person) { joins(:item_splits).where(" item_splits.person_id = ? ", person)}
 	scope :by_person, -> (person) { where(" person_id = ? ", person)}
 
 	def get_total_cost
