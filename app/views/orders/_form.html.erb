@@ -35,7 +35,7 @@
           <%= oi_f.fields_for :item_splits do |is_f| %>
             <%= is_f.label :person_id, "Person" %>
             <%= is_f.select :person_id, Person.all.collect {|p| [ p.proper_name, p.id ]} %>
-            <%= is_f.link_to_remove("Remove Person", class: "red_button" ) %>
+            <%= is_f.link_to_remove("Remove", class: "red_button" ) %>
           <% end %>
           <%= oi_f.link_to_add("Add Person", :item_splits, class: "green_button") %>
         </div>

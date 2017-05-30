@@ -45,6 +45,10 @@
   @include row();
 }
 
+.two_col {
+  @include column(2);
+}
+
 .five_col {
   @include column(5);
 }
@@ -61,7 +65,7 @@
   @include column(3, 4);
 }
 
-.orders {
+.ten_offset {
   @include column(10, 1);
 }
 
