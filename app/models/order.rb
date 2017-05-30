@@ -17,6 +17,10 @@ class Order < ActiveRecord::Base
 		return sum
 	end
 
+	def get_total_items
+		self.order_items.size
+	end
+
 	def get_user_cost(user)
 		items = self.order_items
 		sum = 0

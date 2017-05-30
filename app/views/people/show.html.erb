@@ -1,15 +1,17 @@
 <p id="notice"><%= notice %></p>
 
-<div class="home">
+<div class="row">
 	<div class="user_info">
-	  <h2><%= @person.proper_name %></h2>
-	  <br><br>
-	  <div class="small_offset">
-	  	<h4>Total Owed: $ <%= @outstanding %></h4>
-	  </div>
+		<div class="five_col">
+		  <h2><%= @person.proper_name %></h2>
+		</div>
+		<br><br>
+		<div class="five_col">
+		  <h4>Total Owed: $ <%= @outstanding %></h4>
+		</div>
 	</div>
 
-	<div class="orders">
+	<div class="five_col">
 	  <h4> Your Orders </h4>
 	  <table class="table">
 	    <thead>
@@ -34,7 +36,7 @@
 	        <th>You Owe</th>
 	        <th>Item Info</th>
 	        <th>Order Info</th>
-	        <th>Created By</th>
+	        <th>Creator</th>
 	      </tr>
 	    </thead>
 	  <% @my_items.each do |item| %>
