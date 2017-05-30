@@ -31,6 +31,10 @@
   @include container();
 }
 
+.alert {
+  @include alert();
+}
+
 .table {
   @include table($bordered: true, $zebra: true);
 }
