@@ -4,7 +4,6 @@ class Order < ActiveRecord::Base
 	has_many :item_splits, through: :order_items, :dependent => :destroy
 
 	accepts_nested_attributes_for :order_items, :allow_destroy => true
-	accepts_nested_attributes_for :item_splits, :allow_destroy => true
 
 	scope :by_person, -> (person) { where(" person_id = ? ", person)}
 

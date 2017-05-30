@@ -7,7 +7,7 @@
 		</div>
 		<br><br>
 		<div class="five_col">
-		  <h4>Total Owed: $ <%= @outstanding %></h4>
+		  <h4>You Owe: $<%= @outstanding %></h4>
 		</div>
 	</div>
 
@@ -23,7 +23,7 @@
 	    </thead>
 	  <% @created_orders.each do |order| %>
 	    <tr>
-	      <td><%= order.get_total_cost %></td>
+	      <td>$ <%= order.get_total_cost %></td>
 	      <td><%= order.get_user_cost(current_user) %></td>
 	      <td><%= link_to order.description, order_path(order) %></td>
 	    </tr>
