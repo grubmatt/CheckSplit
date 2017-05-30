@@ -16,7 +16,7 @@ class PeopleController < ApplicationController
 
     @outstanding = 0
     @my_items.each do |item| 
-      @outstanding += item.cost
+      @outstanding += item.cost/item.item_splits.size
     end
 
   end

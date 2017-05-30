@@ -28,7 +28,7 @@
 	  <% @created_orders.each do |order| %>
 	    <tr>
 	      <td>$ <%= order.get_total_cost %></td>
-	      <td><%= order.get_user_cost(current_user) %></td>
+	      <td>$ <%= order.get_user_cost(current_user) %></td>
 	      <td><%= link_to order.description, order_path(order) %></td>
 	    </tr>
 	  <% end %>
@@ -37,6 +37,7 @@
 	  <table class="table">
 	    <thead>
 	      <tr>
+	      	<th>Item Cost</th>
 	        <th>You Owe</th>
 	        <th>Item Info</th>
 	        <th>Order Info</th>
@@ -45,7 +46,8 @@
 	    </thead>
 	  <% @my_items.each do |item| %>
 	    <tr>
-	      <td><%= item.cost %></td>
+	      <td>$ <%= item.cost %></td>
+	      <td>$ <%= item.cost/item.item_splits.size %></td>
 	      <td><%= item.description %></td>
 	      <td><%= link_to item.order.description, order_path(item.order) %></td>
 	      <td><%= item.order.person.proper_name %></td>
