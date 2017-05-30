@@ -5,7 +5,7 @@ class Order < ActiveRecord::Base
 
 	accepts_nested_attributes_for :order_items, :allow_destroy => true
 
-	scope :by_person, -> (person) { where(" person_id = ? ", person)}
+	scope :created_by, -> (person) { where(" person_id = ? ", person)}
 
 	def get_total_cost
 		items = self.order_items
