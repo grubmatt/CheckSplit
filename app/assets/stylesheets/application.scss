@@ -81,6 +81,10 @@
   @include column(1, 4)
 }
 
+.button_small_offset {
+  @include column(2, 2)
+}
+
 /* Buttons */
 
 .green_button {
@@ -95,6 +99,10 @@
   @include button(map-get($colors, red));
 }
 
+.padding_left {
+  padding-left: 12em;
+}
+
 /* Tag Overrides */
 
 h4 {
@@ -103,6 +111,6 @@ h4 {
 
 a {
   color: #0060B6;
-    text-decoration: none;
+  text-decoration: none;
 }
 

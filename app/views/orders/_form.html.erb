@@ -2,7 +2,6 @@
   <% if @order.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
-
       <ul>
       <% @order.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -10,18 +9,20 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="group">
-    <%= f.label :person_id, "Created By" %><br>
-    <%= f.select :person_id, [[current_user.proper_name, current_user.id]] %>
-  </div>
+  
   <div class="group">
     <%= f.label :description %><br>
     <%= f.text_field :description %>
   </div>
   <div class="group">
     <%= f.fields_for :order_items do |oi_f| %>
-      <h5>Item</h5>
+      <div class="group">
+        <h5>Item</h5>
+        <div class="padding_left">
+          <%= oi_f.link_to_remove("Remove Item", class: "red_button" ) %>
+        </div>
+      </div>
+      <br>
       <div class="group">
         <div class="group">
           <%= oi_f.label :description %>
@@ -31,17 +32,20 @@
           <%= oi_f.label :cost %>
           <%= oi_f.text_field :cost %>
         </div>
+      </div>
+      <div class="group">
         <div class="group">
           <%= oi_f.fields_for :item_splits do |is_f| %>
             <%= is_f.label :person_id, "Person" %>
             <%= is_f.select :person_id, Person.all.collect {|p| [ p.proper_name, p.id ]} %>
             <%= is_f.link_to_remove("Remove", class: "red_button" ) %>
           <% end %>
-          <%= oi_f.link_to_add("Add Person", :item_splits, class: "green_button") %>
+          <%= oi_f.link_to_add("+", :item_splits, class: "green_button") %>
         </div>
-        <%= oi_f.link_to_remove("Remove Item", class: "red_button" ) %>
       </div>
     <% end %>
+  </div>
+  <div class="group">
     <%= f.link_to_add("Add Item", :order_items, class: "green_button") %>
   </div>
   <div class="group">
