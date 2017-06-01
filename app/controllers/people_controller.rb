@@ -11,8 +11,8 @@ class PeopleController < ApplicationController
   # GET /people/1.json
   def show
     # Get all orders user created and are a part of
-    @created_orders = Order.created_by(current_user)
-    @my_items = OrderItem.for_person(current_user)
+    @created_orders = current_user.orders
+    @my_items = current_user.item_splits
 
     @outstanding = 0
     @my_items.each do |item| 

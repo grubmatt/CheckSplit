@@ -53,6 +53,10 @@
   @include column(2);
 }
 
+.four_col {
+  @include column(4);
+}
+
 .five_col {
   @include column(5);
 }
@@ -63,6 +67,10 @@
 
 .five_large_offset {
   @include column(5, 6);
+}
+
+.one_med_offset {
+  @include column(1, 4);
 }
 
 .three_med_offset {
@@ -77,13 +85,27 @@
   @include column(2, 10.5)
 }
 
+.button_small_offset {
+  @include column(2, 2)
+}
+
 .button_med_offset {
   @include column(1, 4)
 }
 
-.button_small_offset {
-  @include column(2, 2)
+.two_one {
+  @include column(2, 1);
 }
+
+.two_ten {
+  @include column(2, 10)
+}
+
+.three_nine {
+  @include column(3, 9)
+}
+
+
 
 /* Buttons */
 

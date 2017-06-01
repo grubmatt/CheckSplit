@@ -5,9 +5,6 @@ class OrderItem < ActiveRecord::Base
 	validates_presence_of :description, :cost
 	validates_numericality_of :cost
 
-	scope :for_order, -> (order) {where("order_id = ?", order)} 
-	scope :for_person, -> (person) { joins(:item_splits).where(" item_splits.person_id = ? ", person)}
-
 	def splitters
 		item_splits = self.item_splits
 		splitters = ""

@@ -11,7 +11,7 @@ class OrdersController < ApplicationController
   # GET /orders/1
   # GET /orders/1.json
   def show
-    @order_items = OrderItem.for_order(@order)
+    @order_items = @order.order_items
   end
 
   # GET /orders/new
@@ -72,8 +72,6 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:person_id, :description, 
-        order_items_attributes: [:id, :description, :cost, :_destroy,
-          item_splits_attributes: [:id, :person_id, :_destroy]])
+      params.require(:order).permit(:person_id, :description)
     end
 end

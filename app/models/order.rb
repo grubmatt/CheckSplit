@@ -5,8 +5,6 @@ class Order < ActiveRecord::Base
 
 	validates_presence_of :description
 
-	scope :created_by, -> (person) { where(" person_id = ? ", person)}
-
 	def get_total_cost
 		items = self.order_items
 		sum = 0
