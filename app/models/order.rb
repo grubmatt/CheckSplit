@@ -5,6 +5,8 @@ class Order < ActiveRecord::Base
 
 	accepts_nested_attributes_for :order_items, :allow_destroy => true
 
+	validates_presence_of :description
+
 	scope :created_by, -> (person) { where(" person_id = ? ", person)}
 
 	def get_total_cost

@@ -17,7 +17,6 @@ class OrdersController < ApplicationController
   # GET /orders/new
   def new
     @order = Order.new
-    @order.person_id = current_user.id
     @order.order_items.build
     @order.order_items.each do |item|
       item.item_splits.build
@@ -32,6 +31,7 @@ class OrdersController < ApplicationController
   # POST /orders.json
   def create
     @order = Order.new(order_params)
+    @order.person_id = current_user.id
 
     respond_to do |format|
       if @order.save
