@@ -28,8 +28,6 @@ gem 'bcrypt', '~> 3.1.7'
 
 # Use Kickstart CSS framework
 gem 'kickstart_rails'
-# Use nested_form for accpeting nested attributes
-gem 'nested_form'
 
 group :development, :test do
   gem 'byebug'

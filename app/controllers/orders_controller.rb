@@ -17,10 +17,6 @@ class OrdersController < ApplicationController
   # GET /orders/new
   def new
     @order = Order.new
-    @order.order_items.build
-    @order.order_items.each do |item|
-      item.item_splits.build
-    end
   end
 
   # GET /orders/1/edit
