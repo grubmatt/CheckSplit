@@ -2,6 +2,8 @@ class OrderItem < ActiveRecord::Base
 	belongs_to :order
 	has_many :item_splits
 
+	attr_accessor :people
+
 	validates_presence_of :description, :cost
 	validates_numericality_of :cost
 

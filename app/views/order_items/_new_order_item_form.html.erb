@@ -17,10 +17,16 @@
           <%= f.text_field :description %>
         </div>
       </div>
-      <div class="four_one">
+      <div class="two_col">
         <div class="group">
           <%= f.label :cost %>
           <%= f.text_field :cost %>
+        </div>
+      </div>
+      <div class="four_col">
+        <div class="group">
+          <%= f.label :people %>
+          <%= f.select :people, Person.all.collect {|p| [ p.proper_name, p.id ]}, {}, { :multiple => true } %>
         </div>
       </div>
       <%= f.hidden_field :order_id, value: params[:order_id] %>
@@ -29,7 +35,7 @@
       <div class="five_offset">
         <div class="group">
           <%= f.submit %>
-          <%= link_to 'Cancel', orders_path(params[:order_id]), class: "red_button" %>
+          <%= link_to 'Cancel', order_path(params[:order_id]), class: "red_button" %>
         </div>
       </div>
     </div>

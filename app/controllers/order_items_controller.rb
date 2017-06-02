@@ -14,6 +14,14 @@ class OrderItemsController < ApplicationController
   # POST /order_items.json
   def create
     @order_item = OrderItem.new(order_item_params)
+    @item_splits = order_item_params[:people]
+    @item_splits.delete("")
+    @item_splits.each do |person|
+      @item = ItemSplit.new
+      @item.person_id = person
+      @item.order_item = @order_item
+      @item.save
+    end
 
     respond_to do |format|
       if @order_item.save
@@ -35,7 +43,7 @@ class OrderItemsController < ApplicationController
   def update
     respond_to do |format|
       if @order_item.update(order_item_params)
-        format.html { redirect_to @order_item, notice: 'Order item was successfully updated.' }
+        format.html { redirect_to @order_item, notice: 'Item was successfully updated.' }
         format.json { render :show, status: :ok, location: @order_item }
       else
         format.html { render :edit }
@@ -47,9 +55,10 @@ class OrderItemsController < ApplicationController
   # DELETE /order_items/1
   # DELETE /order_items/1.json
   def destroy
+    @order = @order_item.order
     @order_item.destroy
     respond_to do |format|
-      format.html { redirect_to order_items_url, notice: 'Order item was successfully destroyed.' }
+      format.html { redirect_to @order, notice: 'Item was successfully removed.' }
       format.json { head :no_content }
     end
   end
@@ -62,6 +71,6 @@ class OrderItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_item_params
-      params.require(:order_item).permit(:order_id, :description, :cost)
+      params.require(:order_item).permit(:order_id, :description, :cost, :people => [])
     end
 end
