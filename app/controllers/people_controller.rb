@@ -12,11 +12,11 @@ class PeopleController < ApplicationController
   def show
     # Get all orders user created and are a part of
     @created_orders = current_user.orders
-    @my_items = current_user.item_splits
+    @my_items = OrderItem.for_person(current_user)
 
     @outstanding = 0
     @my_items.each do |item| 
-      @outstanding += item.cost/item.item_splits.size
+      @outstanding += item.cost/item.num_splitters
     end
 
   end

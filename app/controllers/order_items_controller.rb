@@ -14,6 +14,7 @@ class OrderItemsController < ApplicationController
   # POST /order_items.json
   def create
     @order_item = OrderItem.new(order_item_params)
+
     @item_splits = order_item_params[:people]
     @item_splits.delete("")
     @item_splits.each do |person|
@@ -24,8 +25,8 @@ class OrderItemsController < ApplicationController
     end
 
     respond_to do |format|
-      if @order_item.save
-        format.html { redirect_to @order_item, notice: 'Order item was successfully created.' }
+      if @order_item.save & !@item_splits.empty?
+        format.html { redirect_to @order_item, notice: 'Item was successfully created.' }
         format.json { render :show, status: :created, location: @order_item }
 
         @order = @order_item.order
