@@ -25,13 +25,15 @@ class OrderItemsController < ApplicationController
     end
 
     respond_to do |format|
-      if @order_item.save & !@item_splits.empty?
-        format.html { redirect_to @order_item, notice: 'Item was successfully created.' }
-        format.json { render :show, status: :created, location: @order_item }
+      if !@item_splits.empty?
+        if @order_item.save
+          format.html { redirect_to @order_item, notice: 'Item was successfully created.' }
+          format.json { render :show, status: :created, location: @order_item }
 
-        @order = @order_item.order
-        @order_items = @order.order_items
-        format.js
+          @order = @order_item.order
+          @order_items = @order.order_items
+          format.js
+        end
       else
         format.html { render :new }
         format.json { render json: @order_item.errors, status: :unprocessable_entity }
