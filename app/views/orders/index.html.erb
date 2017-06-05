@@ -23,9 +23,9 @@
         <td><%= order.get_total_items %></td>
         <td><%= order.person.proper_name %></td>
         <% if current_user == order.person %>
-          <td><%= link_to 'X', order, method: :delete, data: { confirm: 'Are you sure?' }, class: "red_button" %></td>
+          <td><%= link_to 'Delete', order, method: :delete, data: { confirm: 'Are you sure?' }, class: "red_button" %></td>
         <% else %>
-          <td> Unavailable </td>td>
+          <td> Unavailable </td>
         <% end %>
       </tr>
     <% end %>

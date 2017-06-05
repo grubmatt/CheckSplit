@@ -6,7 +6,9 @@
         <th>Cost</th>
         <th>Item Info</th>
         <th>People Paying</th>
-        <th>Delete</th>
+        <% if current_user == @order.person %>
+          <th>Delete</th>
+        <% end %>
       </tr>
     </thead>
   <% @order_items.each do |item| %>
@@ -14,7 +16,9 @@
       <td>$ <%= item.cost %></td>
       <td><%= item.description %></td>
       <td><%= item.splitters %></td>
-      <td><%= link_to 'X', item, method: :delete, data: { confirm: 'Are you sure?' }, class: "red_button" %></td>
+      <% if current_user == @order.person %>
+        <td><%= link_to 'X', item, method: :delete, data: { confirm: 'Are you sure?' }, class: "red_button" %></td>
+      <% end %>
     </tr>
   <% end %>
   </table>

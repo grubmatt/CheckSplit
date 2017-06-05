@@ -15,9 +15,7 @@ class PeopleController < ApplicationController
     @my_items = OrderItem.for_person(current_user)
 
     @outstanding = 0
-    @my_items.each do |item| 
-      @outstanding += item.cost/item.num_splitters
-    end
+    @my_items.each { |item| @outstanding += item.cost/item.num_splitters }
 
   end
 

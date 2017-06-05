@@ -16,13 +16,13 @@
 <div id="item_list">
   <%= render partial: "list_of_items" %>
 </div>
-<div class="two_ten">
-  <%= link_to(new_order_item_path(order_id: @order.id), id: "new_item_link", class: "green_button", remote: true) do %>
-    Add Item
-  <% end %>
-</div>
-<br>
 <% if @order.person == current_user %>
+  <div class="two_ten">
+    <%= link_to(new_order_item_path(order_id: @order.id), id: "new_item_link", class: "green_button", remote: true) do %>
+      Add Item
+    <% end %>
+  </div>
+  <br>
   <div class="three_nine"
     <div class="group">
       <%= link_to 'Edit Order', edit_order_path(@order), class: "blue_button" %>
