@@ -13,6 +13,7 @@
         <th>Order Info</th>
         <th># of Items</th>
         <th>Creator</th>
+        <th>Delete</th>
       </tr>
     </thead>
     <% @orders.each do |order| %>
@@ -21,6 +22,11 @@
         <td><%= link_to order.description, order_path(order) %></td>
         <td><%= order.get_total_items %></td>
         <td><%= order.person.proper_name %></td>
+        <% if current_user == order.person %>
+          <td><%= link_to 'X', order, method: :delete, data: { confirm: 'Are you sure?' }, class: "red_button" %></td>
+        <% else %>
+          <td> Unavailable </td>td>
+        <% end %>
       </tr>
     <% end %>
   </table>
